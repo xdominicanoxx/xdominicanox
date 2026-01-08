@@ -4,61 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dominicano</title>
+  <link rel="icon" href="favicon.png">
 
   <style>
-  body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #000000;
-  color: white;
-  padding: 40px;
-  position: relative;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;              /* ponto de referência vertical */
-  left: 0;             /* ponto de referência horizontal */
-  width: 100%;
-  height: 200vh;       /* só a altura do ecrã */
-  background-image: url(img/516866480_18278032297285480_5167405146212055114_n.jpg);
-  background-repeat: no-repeat;
-  background-size: auto 100vh;   /* controla o tamanho da imagem */
-  background-position: -350px 10px; 
-  /*        ^        ^ 
-            |        |
-     move lateral   move vertical (px) */
-  opacity: 0.2;
-  z-index: -1;
-}
-
-
-    /* SECÇÃO INTRODUÇÃO */
-    .intro {
-      text-align: center;
-      max-width: 700px;
-      margin: 80px auto 100px auto; /* empurra o grid para baixo */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: white;
       padding: 20px;
-      color: #fff;
-      margin-right: 400px;
+      position: relative;
+      overflow-x: hidden;
     }
-.introDivider {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto 40px auto; /* espaço antes do grid */
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  opacity: 0.8;
-}
+
+    /* FUNDO */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-image: url(img/516866480_18278032297285480_5167405146212055114_n.jpg);
+      background-repeat: no-repeat;
+      background-size: auto 100vh;
+      background-position: -350px 10px;
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    /* INTRO */
+    .intro {
+      max-width: 800px;
+      margin: 60px auto 40px auto;
+      text-align: left;
+      padding: 20px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 8px;
+    }
+
     .intro h1 {
-  font-size: 36px;
-  margin-bottom: 0px;
-  margin-top: -50px;
-  width: fit-content;   /* impede o texto de partir */
-  margin-left: 250px;   /* move para a direita */
-  text-align: left;     /* evita quebra */
-}
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
 
     .intro p {
       font-size: 18px;
@@ -66,32 +55,34 @@ body::before {
       color: #ccc;
     }
 
-    /* TÍTULO DO GRID */
-    h1 {
-      text-align: center;
-      margin-bottom: 100px;
-      font-size: 28px;
-      color: #fff;
-      margin-left: 300px;
+    .introDivider {
+      width: 100%;
+      margin: 40px auto 0 auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
     }
 
+    /* TÍTULO MÚSICAS */
+    .sectionTitle {
+      text-align: center;
+      margin: 40px 0 30px 0;
+      font-size: 28px;
+    }
+
+    /* GRID */
     .musicGrid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 30px;
-      justify-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
       max-width: 900px;
-      margin: 0 auto;
-      margin-right: 300px;
+      margin: 0 auto 60px auto;
     }
 
-    /* CARD */
     .musicCard {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 12px;
       padding: 12px;
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: 0.3s;
       box-shadow: 0 0 12px rgba(0,0,0,0.3);
     }
 
@@ -100,7 +91,6 @@ body::before {
       box-shadow: 0 0 20px rgba(255,255,255,0.2);
     }
 
-    /* CAPA */
     .cover {
       width: 100%;
       height: 160px;
@@ -109,22 +99,19 @@ body::before {
       margin-bottom: 10px;
     }
 
-    /* TÍTULO */
     .title {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: bold;
       margin-bottom: 4px;
-      color: #fff;
     }
 
-    /* ARTISTA */
     .artist {
       font-size: 12px;
       color: #ccc;
       margin-bottom: 12px;
     }
 
-    /* PLAYER CUSTOMIZADO */
+    /* PLAYER */
     .customPlayer {
       display: flex;
       flex-direction: column;
@@ -132,24 +119,19 @@ body::before {
       gap: 10px;
     }
 
-   .playBtn {
-  background-color: #fff;
-  color: #000;
-  font-size: 20px;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  line-height: 1;
-  position: relative;
-  left: 1px;   /* move o ícone ligeiramente para a direita */
-  top: -1px;   /* move o ícone ligeiramente para cima */
-}
+    .playBtn {
+      background-color: #fff;
+      color: #000;
+      font-size: 20px;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     .playBtn:hover {
       background-color: #258a06;
@@ -168,132 +150,168 @@ body::before {
       width: 0%;
       height: 100%;
       background-color: #1db954;
-      transition: width 0.1s linear;
     }
+
+    /* ASSINATURA */
+    .assinaturaLogo {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 110px;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    /* BOTÃO CONTATO */
+    .contactBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #fff;
+      color: #000;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255,255,255,0.3);
+      z-index: 9999;
+    }
+
+    .contactBtn:hover {
+      background: #e6e6e6;
+    }
+
+    .contactPopup {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      background: rgba(255,255,255,0.95);
+      color: #000;
+      padding: 20px;
+      border-radius: 12px;
+      width: 260px;
+      display: none;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      z-index: 10000;
+    }
+
+    .contactPopup h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .closePopup {
+      margin-top: 10px;
+      width: 100%;
+      padding: 8px;
+      border: none;
+      background: #000;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .closePopup:hover {
+      background: #333;
+    }
+
     footer {
-  margin-top: 120px;
-  padding: 40px 20px;
-  text-align: center;
-  color: #aaa;
-  font-size: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  opacity: 0.8;
-}
+      margin-top: 40px;
+      padding: 40px 20px 20px 20px;
+      text-align: center;
+      color: #aaa;
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 0.8;
+    }
 
-footer:hover {
-  opacity: 1;
-}
+    footer:hover {
+      opacity: 1;
+    }
 
-/* BOTÃO FIXO */
-.contactBtn {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  background: #ffffff;
-  color: #000;
-  padding: 12px 28px;
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 0 12px rgba(255,255,255,0.3);
-  transition: 0.2s;
-  z-index: 9999; /* fica sempre por cima */
+    /* MOBILE */
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+      }
 
-}
+      .intro {
+        margin: 40px auto 20px auto;
+        padding: 15px;
+        text-align: left;
+      }
 
-.contactBtn:hover {
-  background: #e6e6e6;
-}
+      .intro h1 {
+        font-size: 26px;
+      }
 
-/* POPUP */
-.contactPopup {
-  position: fixed;
-  bottom: 100px;
-  right: 40px;
-  background: rgba(255,255,255,0.95);
-  color: #000;
-  padding: 20px 25px;
-  border-radius: 12px;
-  width: 240px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  display: none; /* começa escondido */
-  z-index: 10000; /* garante que fica acima do footer */
+      .intro p {
+        font-size: 16px;
+      }
 
-}
+      .sectionTitle {
+        font-size: 24px;
+        margin: 30px 0 20px 0;
+      }
 
-.contactPopup h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
+      .assinaturaLogo {
+        width: 80px;
+        bottom: 10px;
+        left: 10px;
+      }
 
-.closePopup {
-  margin-top: 10px;
-  width: 100%;
-  padding: 8px;
-  border: none;
-  background: #000;
-  color: #fff;
-  border-radius: 6px;
-  cursor: pointer;
-}
+      .contactBtn {
+        padding: 10px 20px;
+        font-size: 14px;
+        bottom: 20px;
+        right: 20px;
+      }
 
-.closePopup:hover {
-  background: #333;
-}
-
-.assinaturaLogo {
-  position: fixed;
-  bottom: 20px;
-  left: 70px;
-  width: 140px;
-  opacity: 0.85;
-  pointer-events: none;
-  transform: rotate(90deg); /* gira para ficar vertical */
-}
+      .contactPopup {
+        right: 10px;
+        width: 90%;
+      }
+    }
   </style>
 </head>
 <body>
 
-<div class="contactBtn">Contato</div>
+  <div class="contactBtn">Contato</div>
 
-<div class="contactPopup" id="contactPopup">
-  <h3>Contato</h3>
-  <p>Email: x.dominicano.x.com</p>
-  <p>Telefone: +351 934 614 246</p>
-  <button class="closePopup">Fechar</button>
-</div>
+  <div class="contactPopup" id="contactPopup">
+    <h3>Contato</h3>
+    <p>Email: x.dominicano.x.com</p>
+    <p>Telefone: +351 934 614 246</p>
+    <button class="closePopup">Fechar</button>
+  </div>
 
-<img src="img/A stylized white PNG.png" class="assinaturaLogo">
+  <img src="img/A stylized white PNG.png" class="assinaturaLogo" alt="Assinatura Dominicano">
 
   <!-- SECÇÃO INICIAL -->
   <section class="intro">
     <h1>Bem-vindo</h1>
     <p>
       Sou o Vitor Azevedo, mais conhecido como Dominicano. Aqui encontras algumas das minhas músicas.
-As letras são 100% minhas. A produção musical é feita com apoio de inteligência artificial, devido a limitações técnicas de canto e gravação. Não vejo problema em usar IA como ferramenta de criação — desde que o coração da música, a letra e a intenção, sejam sempre humanas.
-A IA ajuda-me a criar demos, tal como um letrista recorre a um músico para compor a melodia. Nunca fico com o primeiro resultado: tal como num estúdio, ouço várias versões até encontrar aquela que realmente transmite o que sinto. Isso é arte. É criação. É expressão pessoal. E é exatamente por isso que a inteligência artificial nunca poderá substituir o fator humano.
-Qualquer uso indevido do meu trabalho será alvo de ação judicial.
-<br><br>
-Divirtam-se!
-
+      As letras são 100% minhas. A produção musical é feita com apoio de inteligência artificial, devido a limitações técnicas de canto e gravação. Não vejo problema em usar IA como ferramenta de criação — desde que o coração da música, a letra e a intenção, sejam sempre humanas.
+      A IA ajuda-me a criar demos, tal como um letrista recorre a um músico para compor a melodia. Nunca fico com o primeiro resultado: tal como num estúdio, ouço várias versões até encontrar aquela que realmente transmite o que sinto. Isso é arte. É criação. É expressão pessoal. E é exatamente por isso que a inteligência artificial nunca poderá substituir o fator humano.
+      Qualquer uso indevido do meu trabalho será alvo de ação judicial.
+      <br><br>
+      Divirtam-se!
     </p>
     <div class="introDivider"></div>
   </section>
-  
 
   <!-- TÍTULO DO GRID -->
-  <h1>Músicas</h1>
+  <h1 class="sectionTitle">Músicas</h1>
 
   <div class="musicGrid">
 
     <div class="musicCard">
-      <img src="img/Captura de ecrã 2026-01-08 130314.png" class="cover" />
+      <img src="img/Captura de ecrã 2026-01-08 130314.png" class="cover" alt="Onde Estou?">
       <div class="title">Onde Estou?</div>
       <div class="artist">Dominicano</div>
-
       <audio src="musicas/Onde_estou.mp3"></audio>
-
       <div class="customPlayer">
         <button class="playBtn">▶</button>
         <div class="progressBar">
@@ -303,12 +321,10 @@ Divirtam-se!
     </div>
 
     <div class="musicCard">
-      <img src="img/Captura de ecrã 2026-01-08 130240.png" class="cover" />
+      <img src="img/Captura de ecrã 2026-01-08 130240.png" class="cover" alt="Diz alguma coisa">
       <div class="title">Diz alguma coisa</div>
       <div class="artist">Dominicano</div>
-
       <audio src="musicas/Diz_alguma_coisa_.mp3"></audio>
-
       <div class="customPlayer">
         <button class="playBtn">▶</button>
         <div class="progressBar">
@@ -318,12 +334,10 @@ Divirtam-se!
     </div>
 
     <div class="musicCard">
-      <img src="img/Captura de ecrã 2026-01-08 130255.png" class="cover" />
+      <img src="img/Captura de ecrã 2026-01-08 130255.png" class="cover" alt="Ansiedade">
       <div class="title">Ansiedade</div>
       <div class="artist">Dominicano</div>
-
       <audio src="musicas/Ansiedade.mp3"></audio>
-
       <div class="customPlayer">
         <button class="playBtn">▶</button>
         <div class="progressBar">
@@ -333,12 +347,10 @@ Divirtam-se!
     </div>
 
     <div class="musicCard">
-      <img src="img/Captura de ecrã 2026-01-08 135835.png" class="cover" />
+      <img src="img/Captura de ecrã 2026-01-08 135835.png" class="cover" alt="Alibi">
       <div class="title">Alibi</div>
       <div class="artist">Dominicano</div>
-
       <audio src="musicas/Alibi.mp3"></audio>
-
       <div class="customPlayer">
         <button class="playBtn">▶</button>
         <div class="progressBar">
@@ -389,23 +401,22 @@ Divirtam-se!
       });
     });
 
+    const btn = document.querySelector(".contactBtn");
+    const popup = document.getElementById("contactPopup");
+    const closeBtn = document.querySelector(".closePopup");
+
+    btn.addEventListener("click", () => {
+      popup.style.display = "block";
+    });
+
+    closeBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
   </script>
-  <script>
-const btn = document.querySelector(".contactBtn");
-const popup = document.getElementById("contactPopup");
-const closeBtn = document.querySelector(".closePopup");
 
-btn.addEventListener("click", () => {
-  popup.style.display = "block";
-});
+  <footer>
+    © 2026 Dominicano — Todos os direitos reservados.
+  </footer>
 
-closeBtn.addEventListener("click", () => {
-  popup.style.display = "none";
-});
-</script>
-<footer>
-  © 2026 Dominicano — Todos os direitos reservados.
-</footer>
 </body>
-
 </html>
