@@ -15,6 +15,10 @@
       padding: 20px;
       position: relative;
       overflow-x: hidden;
+      min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
     }
 
     /* FUNDO */
@@ -68,97 +72,7 @@
       font-size: 28px;
     }
 
-    /* GRID */
-    .musicGrid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 25px;
-      max-width: 900px;
-      margin: 0 auto 60px auto;
-    }
 
-    .musicCard {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 12px;
-      text-align: center;
-      transition: 0.3s;
-      box-shadow: 0 0 12px rgba(0,0,0,0.3);
-    }
-    .musicCard {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 12px;
-      text-align: center;
-      transition: 0.3s;
-      box-shadow: 0 0 12px rgba(0,0,0,0.3);
-    }
-
-    .musicCard:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
-    }
-
-    .cover {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
-    .title {
-      font-size: 15px;
-      font-weight: bold;
-      margin-bottom: 4px;
-    }
-
-    .artist {
-      font-size: 12px;
-      color: #ccc;
-      margin-bottom: 12px;
-    }
-
-    /* PLAYER */
-    .customPlayer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .playBtn {
-      background-color: #fff;
-      color: #000;
-      font-size: 20px;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .playBtn:hover {
-      background-color: #258a06;
-    }
-
-    .progressBar {
-      width: 100%;
-      height: 6px;
-      background-color: #ffffff;
-      border-radius: 3px;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .progressFill {
-      width: 0%;
-      height: 100%;
-      background-color: #1db954;
-    }
 
     /* ASSINATURA */
     .assinaturaLogo {
@@ -225,14 +139,14 @@
     }
 
     footer {
-      margin-top: 40px;
-      padding: 40px 20px 20px 20px;
-      text-align: center;
-      color: #aaa;
-      font-size: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      opacity: 0.8;
-    }
+  margin-top: auto;
+  padding: 40px 20px 20px 20px;
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.8;
+}
     /* Grid mais compacto */
 .destaqueGrid {
   grid-template-columns: 1fr;
@@ -322,6 +236,114 @@
         width: 90%;
       }
     }
+    .albumCard {
+  background: #111;
+  border-radius: 12px;
+  padding: 12px;
+  width: 260px;
+  margin: 0 auto 30px auto;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.albumCard:hover {
+  background: #181818;
+}
+
+/* Cabeçalho do álbum */
+.albumHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.albumCard:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    }
+
+.albumCover {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.trackItem:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255,255,255,0.25);
+  background: #222;
+}
+
+.albumInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.albumTitle {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.albumArtist {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* Dropdown */
+.albumTracks {
+  display: none;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #333;
+  display: none;
+}
+
+
+
+
+/* Quando o álbum abre */
+.albumCard.open .albumTracks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Cada música */
+.trackItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #1a1a1a;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.trackThumb {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.trackTitle {
+  flex: 1;
+  font-size: 14px;
+}
+
+.trackPlay {
+  background: #333;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.trackPlay:hover {
+  background: #555;
+}
   </style>
 </head>
 <body>
@@ -342,9 +364,7 @@
     <h1>Bem-vindo</h1>
     <p>
       Sou o Vitor Azevedo, mais conhecido como Dominicano. Aqui encontras algumas das minhas músicas.
-      As letras são 100% minhas. A produção musical é feita com apoio de inteligência artificial, devido a limitações técnicas de canto e gravação. Não vejo problema em usar IA como ferramenta de criação — desde que o coração da música, a letra e a intenção, sejam sempre humanas.
-      A IA ajuda-me a criar demos, tal como um letrista recorre a um músico para compor a melodia. Nunca fico com o primeiro resultado: tal como num estúdio, ouço várias versões até encontrar aquela que realmente transmite o que sinto. Isso é arte. É criação. É expressão pessoal. E é exatamente por isso que a inteligência artificial nunca poderá substituir o fator humano.
-      Qualquer uso indevido do meu trabalho será alvo de ação judicial.
+      As letras são e melodias são 100% originais e escritas por mim mas cantadas por inteligência artificial.
       <br><br>
       Divirtam-se!
     </p>
@@ -352,87 +372,128 @@
   </section>
 
  <!-- TÍTULO DO GRID -->
-<h1 class="sectionTitle">Lançamento recente</h1>
+<h1 class="sectionTitle">Álbuns</h1>
 
-<div class="musicGrid destaqueGrid">
+<div class="albumsRow">
 
-  <div class="musicCard miniCard">
-    <img src="img/dfa72950-0fe7-494a-b5c9-26e1265ae7a9.jpg" class="cover" alt="Faixa em destaque">
-    <div class="title">Foi a última vez</div>
-    <div class="artist">Dominicano</div>
+  <div class="albumCard">
 
-    <audio src="musicas/Foi a última vez.mp3"></audio>
-
-    <div class="customPlayer">
-      <button class="playBtn">▶</button>
-      <div class="progressBar">
-        <div class="progressFill"></div>
+    <!-- Cabeçalho do Álbum -->
+    <div class="albumHeader">
+      <img src="img/Captura de ecrã 2026-01-08 130314.png" class="albumCover" alt="Onde Estou?">
+      <div class="albumInfo">
+        <div class="title">EP</div>
+        <div class="albumTitle">Onde Estou?</div>
+        <div class="albumArtist">Dominicano</div>
       </div>
     </div>
+
+    <!-- Dropdown com as músicas -->
+    <div class="albumTracks">
+
+      <div class="trackItem">
+        <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 130314.png">
+        <div class="trackTitle">Onde Estou?</div>
+        <button class="trackPlay" data-src="musicas/Onde_estou.mp3">▶</button>
+      </div>
+
+      <div class="trackItem">
+        <img class="trackThumb" src="img/dfa72950-0fe7-494a-b5c9-26e1265ae7a9.jpg">
+        <div class="trackTitle">Foi a última vez</div>
+        <button class="trackPlay" data-src="musicas/Foi a última vez.mp3">▶</button>
+      </div>
+
+      <div class="trackItem">
+        <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 130240.png">
+        <div class="trackTitle">Diz Alguma Coisa</div>
+        <button class="trackPlay" data-src="musicas/Diz_alguma_coisa_.mp3">▶</button>
+      </div>
+
+      <div class="trackItem">
+        <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 135835.png">
+        <div class="trackTitle">Alibi</div>
+        <button class="trackPlay" data-src="musicas/Alibi.mp3">▶</button>
+      </div>
+
+      <div class="trackItem">
+        <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 130255.png">
+        <div class="trackTitle">Ansiedade</div>
+        <button class="trackPlay" data-src="musicas/Ansiedade.mp3">▶</button>
+      </div>
+
+      <div class="trackItem">
+        <img class="trackThumb" src="img/medicina.jpeg">
+        <div class="trackTitle">Medicina</div>
+        <button class="trackPlay" data-src="musicas/Medicina.mp3">▶</button>
+      </div>
+
+    </div>
   </div>
+
+  
+  
 
 </div>
 
-<!-- TÍTULO DO GRID -->
-<h1 class="sectionTitle">Músicas</h1>
+<!-- Player global -->
+<audio id="globalPlayer"></audio>
 
-<div class="musicGrid">
-
-  <div class="musicCard">
-    <img src="img/Captura de ecrã 2026-01-08 130240.png" class="cover" alt="Diz alguma coisa">
-    <div class="title">Diz alguma coisa</div>
-    <div class="artist">Dominicano</div>
-    <audio src="musicas/Diz_alguma_coisa_.mp3"></audio>
-    <div class="customPlayer">
-      <button class="playBtn">▶</button>
-      <div class="progressBar">
-        <div class="progressFill"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="musicCard">
-    <img src="img/Captura de ecrã 2026-01-08 130314.png" class="cover" alt="Onde Estou?">
-    <div class="title">Onde Estou?</div>
-    <div class="artist">Dominicano</div>
-    <audio src="musicas/Onde_estou.mp3"></audio>
-    <div class="customPlayer">
-      <button class="playBtn">▶</button>
-      <div class="progressBar">
-        <div class="progressFill"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="musicCard">
-    <img src="img/Captura de ecrã 2026-01-08 130255.png" class="cover" alt="Ansiedade">
-    <div class="title">Ansiedade</div>
-    <div class="artist">Dominicano</div>
-    <audio src="musicas/Ansiedade.mp3"></audio>
-    <div class="customPlayer">
-      <button class="playBtn">▶</button>
-      <div class="progressBar">
-        <div class="progressFill"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="musicCard">
-    <img src="img/Captura de ecrã 2026-01-08 135835.png" class="cover" alt="Alibi">
-    <div class="title">Alibi</div>
-    <div class="artist">Dominicano</div>
-    <audio src="musicas/Alibi.mp3"></audio>
-    <div class="customPlayer">
-      <button class="playBtn">▶</button>
-      <div class="progressBar">
-        <div class="progressFill"></div>
-      </div>
-    </div>
-  </div>
-
-</div> <!-- FECHA O SEGUNDO GRID -->
 
   <script>
+    
+const albums = document.querySelectorAll('.albumCard');
+const player = document.getElementById('globalPlayer');
+
+let currentButton = null; // guarda o botão da música atual
+
+albums.forEach(album => {
+  const header = album.querySelector('.albumHeader');
+
+  // Abrir/fechar dropdown
+  header.addEventListener('click', () => {
+    album.classList.toggle('open');
+  });
+
+  // Tocar música ao clicar no play
+  const tracks = album.querySelectorAll('.trackPlay');
+  tracks.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const src = btn.getAttribute('data-src');
+
+      // Se clicaste no mesmo botão que já está a tocar → PAUSA
+      if (currentButton === btn && !player.paused) {
+        player.pause();
+        btn.textContent = "▶";
+        return;
+      }
+
+      // Se clicaste numa música diferente → muda o ícone do anterior
+      if (currentButton && currentButton !== btn) {
+        currentButton.textContent = "▶";
+      }
+
+      // Atualiza o player
+      player.src = src;
+      player.play();
+
+      // Atualiza o botão atual
+      btn.textContent = "⏸";
+      currentButton = btn;
+    });
+  });
+});
+
+// Quando a música termina → volta o botão para ▶
+player.addEventListener('ended', () => {
+  if (currentButton) {
+    currentButton.textContent = "▶";
+    currentButton = null;
+  }
+});
+
+
+
     document.querySelectorAll(".musicCard").forEach(card => {
       const audio = card.querySelector("audio");
       const playBtn = card.querySelector(".playBtn");
@@ -490,6 +551,4 @@
   </footer>
 
 </body>
-
 </html>
-
