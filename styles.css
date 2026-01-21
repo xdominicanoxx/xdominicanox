@@ -1,0 +1,323 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: white;
+  padding: 20px;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* FUNDO */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url(img/2.jpg);
+  background-repeat: no-repeat;
+  background-size: auto 100vh;
+  background-position: -100px 10px;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+/* INTRO */
+.intro {
+  max-width: 800px;
+  margin: 60px auto 40px auto;
+  text-align: left;
+  padding: 20px;
+  background: rgba(0,0,0,0.4);
+  border-radius: 8px;
+}
+
+.intro h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.intro p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.introDivider {
+  width: 100%;
+  margin: 40px auto 0 auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* TÍTULO */
+.sectionTitle {
+  text-align: center;
+  margin: 40px 0 30px 0;
+  font-size: 28px;
+}
+
+/* ÁLBUM */
+.albumCard {
+  background: #111;
+  border-radius: 12px;
+  padding: 12px;
+  width: 260px;
+  margin: 0 auto 30px auto;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.albumCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.albumHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.albumCover {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.albumInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.albumTitle {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.albumArtist {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* DROPDOWN */
+.albumTracks {
+  display: none;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #333;
+}
+
+.albumCard.open .albumTracks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* MÚSICA — LAYOUT SPOTIFY */
+.trackItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #1a1a1a;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.trackItem:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255,255,255,0.25);
+  background: #222;
+}
+
+/* Linha de cima */
+.trackTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trackThumb {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.trackTitle {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Botão play */
+.trackPlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: #333;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.trackPlay:hover {
+  background: #555;
+}
+
+/* Linha de baixo */
+.trackBottom {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Barra */
+.trackProgress {
+  flex: 1;
+  height: 4px;
+  background: #333;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.trackProgressFill {
+  width: 0%;
+  height: 100%;
+  background: #28af06;
+  transition: width 0.1s linear;
+}
+
+/* Tempo */
+.trackTime {
+  font-size: 12px;
+  opacity: 0.7;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* ASSINATURA */
+.assinaturaLogo {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 110px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* BOTÃO CONTATO */
+.contactBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #fff;
+  color: #000;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(255,255,255,0.3);
+  z-index: 9999;
+}
+
+.contactBtn:hover {
+  background: #e6e6e6;
+}
+
+.contactPopup {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  background: rgba(255,255,255,0.95);
+  color: #000;
+  padding: 20px;
+  border-radius: 12px;
+  width: 260px;
+  display: none;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  z-index: 10000;
+}
+
+.closePopup {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: #000;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.closePopup:hover {
+  background: #333;
+}
+
+/* FOOTER */
+footer {
+  margin-top: auto;
+  padding: 40px 20px 20px 20px;
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0.8;
+}
+
+footer:hover {
+  opacity: 1;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  .intro {
+    margin: 40px auto 20px auto;
+    padding: 15px;
+    text-align: left;
+  }
+
+  .intro h1 {
+    font-size: 26px;
+  }
+
+  .intro p {
+    font-size: 16px;
+  }
+
+  .assinaturaLogo {
+    width: 80px;
+    bottom: 10px;
+    left: 10px;
+  }
+
+  .contactBtn {
+    padding: 10px 20px;
+    font-size: 14px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .contactPopup {
+    right: 10px;
+    width: 90%;
+  }
+}

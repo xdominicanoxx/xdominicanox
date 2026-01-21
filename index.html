@@ -7,343 +7,7 @@
   <link rel="icon" href="favicon.png">
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: white;
-      padding: 20px;
-      position: relative;
-      overflow-x: hidden;
-      min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-    }
-
-    /* FUNDO */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-image: url(img/2.jpg);
-      background-repeat: no-repeat;
-      background-size: auto 100vh;
-      background-position: -100px 10px;
-      opacity: 0.2;
-      z-index: -1;
-    }
-
-    /* INTRO */
-    .intro {
-      max-width: 800px;
-      margin: 60px auto 40px auto;
-      text-align: left;
-      padding: 20px;
-      background: rgba(0,0,0,0.4);
-      border-radius: 8px;
-    }
-
-    .intro h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .intro p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #ccc;
-    }
-
-    .introDivider {
-      width: 100%;
-      margin: 40px auto 0 auto;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    /* TÍTULO MÚSICAS */
-    .sectionTitle {
-      text-align: center;
-      margin: 40px 0 30px 0;
-      font-size: 28px;
-    }
-
-
-
-    /* ASSINATURA */
-    .assinaturaLogo {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      width: 110px;
-      opacity: 0.7;
-      pointer-events: none;
-    }
-
-    /* BOTÃO CONTATO */
-    .contactBtn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #fff;
-      color: #000;
-      padding: 12px 28px;
-      border-radius: 30px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(255,255,255,0.3);
-      z-index: 9999;
-    }
-
-    .contactBtn:hover {
-      background: #e6e6e6;
-    }
-
-    .contactPopup {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      background: rgba(255,255,255,0.95);
-      color: #000;
-      padding: 20px;
-      border-radius: 12px;
-      width: 260px;
-      display: none;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      z-index: 10000;
-    }
-
-    .contactPopup h3 {
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-
-    .closePopup {
-      margin-top: 10px;
-      width: 100%;
-      padding: 8px;
-      border: none;
-      background: #000;
-      color: #fff;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .closePopup:hover {
-      background: #333;
-    }
-
-    footer {
-  margin-top: auto;
-  padding: 40px 20px 20px 20px;
-  text-align: center;
-  color: #aaa;
-  font-size: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  opacity: 0.8;
-}
-    /* Grid mais compacto */
-.destaqueGrid {
-  grid-template-columns: 1fr;
-  max-width: 260px; /* largura estilo card do YouTube */
-}
-
-/* Card pequeno */
-.miniCard {
-  padding: 8px;
-  border-radius: 10px;
-  background: #111;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-/* Thumbnail pequena estilo YouTube */
-.miniCard .cover {
-  width: 100%;
-  height: 140px;   /* tamanho típico de miniatura */
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-/* Título compacto */
-.miniCard .title {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-/* Artista pequeno */
-.miniCard .artist {
-  font-size: 12px;
-  opacity: 0.7;
-}
-
-/* Player reduzido */
-.miniCard .customPlayer {
-  margin-top: 4px;
-}
-
-.miniCard .playBtn {
-  font-size: 14px;
-  padding: 4px 8px;
-}
-
-    footer:hover {
-      opacity: 1;
-    }
-
-    /* MOBILE */
-    @media (max-width: 600px) {
-      body {
-        padding: 15px;
-      }
-
-      .intro {
-        margin: 40px auto 20px auto;
-        padding: 15px;
-        text-align: left;
-      }
-
-      .intro h1 {
-        font-size: 26px;
-      }
-
-      .intro p {
-        font-size: 16px;
-      }
-
-      .assinaturaLogo {
-        width: 80px;
-        bottom: 10px;
-        left: 10px;
-      }
-
-      .contactBtn {
-        padding: 10px 20px;
-        font-size: 14px;
-        bottom: 20px;
-        right: 20px;
-      }
-
-      .contactPopup {
-        right: 10px;
-        width: 90%;
-      }
-    }
-    .albumCard {
-  background: #111;
-  border-radius: 12px;
-  padding: 12px;
-  width: 260px;
-  margin: 0 auto 30px auto;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.albumCard:hover {
-  background: #181818;
-}
-
-/* Cabeçalho do álbum */
-.albumHeader {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.albumCard:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255,255,255,0.2);
-    }
-
-.albumCover {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.trackItem:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(255,255,255,0.25);
-  background: #222;
-}
-
-.albumInfo {
-  display: flex;
-  flex-direction: column;
-}
-
-.albumTitle {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.albumArtist {
-  font-size: 14px;
-  opacity: 0.7;
-}
-
-/* Dropdown */
-.albumTracks {
-  display: none;
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid #333;
-  display: none;
-}
-
-
-
-
-/* Quando o álbum abre */
-.albumCard.open .albumTracks {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Cada música */
-.trackItem {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #1a1a1a;
-  padding: 8px;
-  border-radius: 8px;
-}
-
-.trackThumb {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.trackTitle {
-  flex: 1;
-  font-size: 14px;
-}
-
-.trackPlay {
-  background: #333;
-  border: none;
-  color: white;
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.trackPlay:hover {
-  background: #555;
-}
+    @import url('styles.css');
   </style>
 </head>
 <body>
@@ -365,8 +29,6 @@
     <p>
       Sou o Vitor Azevedo, mais conhecido como Dominicano. Aqui encontras algumas das minhas músicas.
       As letras e melodias são 100% originais e escritas por mim mas cantadas por inteligência artificial.
-      <br><br>
-      Divirtam-se!
     </p>
     <div class="introDivider"></div>
   </section>
@@ -391,41 +53,112 @@
     <!-- Dropdown com as músicas -->
     <div class="albumTracks">
 
-      <div class="trackItem">
-        <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 130314.png">
-        <div class="trackTitle">Onde Estou?</div>
-        <button class="trackPlay" data-src="musicas/Onde_estou.mp3">▶</button>
-      </div>
+  <div class="trackItem">
 
-      <div class="trackItem">
-        <img class="trackThumb" src="img/dfa72950-0fe7-494a-b5c9-26e1265ae7a9.jpg">
-        <div class="trackTitle">Foi a última vez</div>
-        <button class="trackPlay" data-src="musicas/Foi a última vez.mp3">▶</button>
-      </div>
+  <div class="trackTop">
+    <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 130314.png">
+    <div class="trackTitle">Onde Estou?</div>
+    <button class="trackPlay" data-src="musicas/Onde_estou.mp3">▶</button>
+  </div>
 
-      <div class="trackItem">
-        <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 130240.png">
-        <div class="trackTitle">Diz Alguma Coisa</div>
-        <button class="trackPlay" data-src="musicas/Diz_alguma_coisa_.mp3">▶</button>
-      </div>
+  <div class="trackBottom">
+    <div class="trackProgress">
+      <div class="trackProgressFill"></div>
+    </div>
+    <div class="trackTime">0:00</div>
+  </div>
 
-      <div class="trackItem">
-        <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 135835.png">
-        <div class="trackTitle">Alibi</div>
-        <button class="trackPlay" data-src="musicas/Alibi.mp3">▶</button>
-      </div>
+</div>
 
-      <div class="trackItem">
-        <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 130255.png">
-        <div class="trackTitle">Ansiedade</div>
-        <button class="trackPlay" data-src="musicas/Ansiedade.mp3">▶</button>
-      </div>
 
-      <div class="trackItem">
-        <img class="trackThumb" src="img/medicina.jpeg">
-        <div class="trackTitle">Medicina</div>
-        <button class="trackPlay" data-src="musicas/Medicina.mp3">▶</button>
-      </div>
+<div class="trackItem">
+
+  <div class="trackTop">
+    <img class="trackThumb" src="img/dfa72950-0fe7-494a-b5c9-26e1265ae7a9.jpg">
+    <div class="trackTitle">Foi a última vez</div>
+    <button class="trackPlay" data-src="musicas/Foi a última vez.mp3">▶</button>
+  </div>
+
+  <div class="trackBottom">
+    <div class="trackProgress">
+      <div class="trackProgressFill"></div>
+    </div>
+    <div class="trackTime">0:00</div>
+  </div>
+
+</div>
+
+
+<div class="trackItem">
+
+  <div class="trackTop">
+    <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 130240.png">
+    <div class="trackTitle">Diz Alguma Coisa</div>
+    <button class="trackPlay" data-src="musicas/Diz_alguma_coisa_.mp3">▶</button>
+  </div>
+
+  <div class="trackBottom">
+    <div class="trackProgress">
+      <div class="trackProgressFill"></div>
+    </div>
+    <div class="trackTime">0:00</div>
+  </div>
+
+</div>
+
+
+<div class="trackItem">
+
+  <div class="trackTop">
+    <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 135835.png">
+    <div class="trackTitle">Alibi</div>
+    <button class="trackPlay" data-src="musicas/Alibi.mp3">▶</button>
+  </div>
+
+  <div class="trackBottom">
+    <div class="trackProgress">
+      <div class="trackProgressFill"></div>
+    </div>
+    <div class="trackTime">0:00</div>
+  </div>
+
+</div>
+
+
+<div class="trackItem">
+
+  <div class="trackTop">
+    <img class="trackThumb" src="img/Captura de ecrã 2026-01-08 130255.png">
+    <div class="trackTitle">Ansiedade</div>
+    <button class="trackPlay" data-src="musicas/Ansiedade.mp3">▶</button>
+  </div>
+
+  <div class="trackBottom">
+    <div class="trackProgress">
+      <div class="trackProgressFill"></div>
+    </div>
+    <div class="trackTime">0:00</div>
+  </div>
+
+</div>
+
+
+<div class="trackItem">
+
+  <div class="trackTop">
+    <img class="trackThumb" src="img/medicina.jpeg">
+    <div class="trackTitle">Medicina</div>
+    <button class="trackPlay" data-src="musicas/Medicina.mp3">▶</button>
+  </div>
+
+  <div class="trackBottom">
+    <div class="trackProgress">
+      <div class="trackProgressFill"></div>
+    </div>
+    <div class="trackTime">0:00</div>
+  </div>
+
+</div>
 
     </div>
   </div>
@@ -444,106 +177,86 @@
 const albums = document.querySelectorAll('.albumCard');
 const player = document.getElementById('globalPlayer');
 
-let currentButton = null; // guarda o botão da música atual
+let currentButton = null;
+let currentProgress = null;
+let currentTimeLabel = null;
 
 albums.forEach(album => {
   const header = album.querySelector('.albumHeader');
 
-  // Abrir/fechar dropdown
   header.addEventListener('click', () => {
     album.classList.toggle('open');
   });
 
-  // Tocar música ao clicar no play
-  const tracks = album.querySelectorAll('.trackPlay');
-  tracks.forEach(btn => {
+  const tracks = album.querySelectorAll('.trackItem');
+
+  tracks.forEach(track => {
+    const btn = track.querySelector('.trackPlay');
+    const progress = track.querySelector('.trackProgressFill');
+    const timeLabel = track.querySelector('.trackTime');
+
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const src = btn.getAttribute('data-src');
 
-      // Se clicaste no mesmo botão que já está a tocar → PAUSA
+      // Pausar a mesma música
       if (currentButton === btn && !player.paused) {
         player.pause();
         btn.textContent = "▶";
         return;
       }
 
-      // Se clicaste numa música diferente → muda o ícone do anterior
+      // Reset do botão anterior
       if (currentButton && currentButton !== btn) {
         currentButton.textContent = "▶";
       }
 
-      // Atualiza o player
+      // Reset da barra anterior
+      if (currentProgress && currentProgress !== progress) {
+        currentProgress.style.width = "0%";
+      }
+
+      // Reset do tempo anterior
+      if (currentTimeLabel && currentTimeLabel !== timeLabel) {
+        currentTimeLabel.textContent = "0:00";
+      }
+
+      // Atualizar player
       player.src = src;
       player.play();
 
-      // Atualiza o botão atual
-      btn.textContent = "⏸";
+      // Guardar elementos atuais
       currentButton = btn;
+      currentProgress = progress;
+      currentTimeLabel = timeLabel;
+
+      btn.textContent = "⏸";
     });
   });
 });
 
-// Quando a música termina → volta o botão para ▶
-player.addEventListener('ended', () => {
-  if (currentButton) {
-    currentButton.textContent = "▶";
-    currentButton = null;
-  }
+// Atualizar barra e tempo
+player.addEventListener('timeupdate', () => {
+  if (!currentProgress || !currentTimeLabel) return;
+
+  const percent = (player.currentTime / player.duration) * 100;
+  currentProgress.style.width = percent + "%";
+
+  const minutes = Math.floor(player.currentTime / 60);
+  const seconds = Math.floor(player.currentTime % 60).toString().padStart(2, "0");
+  currentTimeLabel.textContent = `${minutes}:${seconds}`;
 });
 
+// Reset ao terminar
+player.addEventListener('ended', () => {
+  if (currentButton) currentButton.textContent = "▶";
+  if (currentProgress) currentProgress.style.width = "0%";
+  if (currentTimeLabel) currentTimeLabel.textContent = "0:00";
 
-
-    document.querySelectorAll(".musicCard").forEach(card => {
-      const audio = card.querySelector("audio");
-      const playBtn = card.querySelector(".playBtn");
-      const progressBar = card.querySelector(".progressBar");
-      const progressFill = card.querySelector(".progressFill");
-
-      let isPlaying = false;
-
-      playBtn.addEventListener("click", () => {
-        if (!isPlaying) {
-          audio.play();
-          playBtn.textContent = "⏸";
-          isPlaying = true;
-        } else {
-          audio.pause();
-          playBtn.textContent = "▶";
-          isPlaying = false;
-        }
-      });
-
-      audio.addEventListener("timeupdate", () => {
-        const percent = (audio.currentTime / audio.duration) * 100;
-        progressFill.style.width = percent + "%";
-      });
-
-      progressBar.addEventListener("click", e => {
-        const rect = progressBar.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const percent = x / rect.width;
-        audio.currentTime = percent * audio.duration;
-      });
-
-      audio.addEventListener("ended", () => {
-        playBtn.textContent = "▶";
-        isPlaying = false;
-        progressFill.style.width = "0%";
-      });
-    });
-
-    const btn = document.querySelector(".contactBtn");
-    const popup = document.getElementById("contactPopup");
-    const closeBtn = document.querySelector(".closePopup");
-
-    btn.addEventListener("click", () => {
-      popup.style.display = "block";
-    });
-
-    closeBtn.addEventListener("click", () => {
-      popup.style.display = "none";
-    });
+  currentButton = null;
+  currentProgress = null;
+  currentTimeLabel = null;
+});
   </script>
 
   <footer>
@@ -551,6 +264,4 @@ player.addEventListener('ended', () => {
   </footer>
 
 </body>
-
 </html>
-
