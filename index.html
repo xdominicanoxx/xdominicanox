@@ -42,10 +42,10 @@
 
     <!-- Cabeçalho do Álbum -->
     <div class="albumHeader">
-      <img src="img/Captura de ecrã 2026-01-08 130314.png" class="albumCover" alt="Onde Estou?">
+      <img src="img/9d2bb4a9-e90d-4b7b-91a2-ac3edd6c8a22.jpg" class="albumCover" alt="Onde Estou?">
       <div class="albumInfo">
         <div class="title"></div>
-        <div class="albumTitle">Onde Estou?</div>
+        <div class="albumTitle">EP26</div>
         <div class="albumArtist">Dominicano</div>
       </div>
     </div>
@@ -257,6 +257,20 @@ player.addEventListener('ended', () => {
   currentProgress = null;
   currentTimeLabel = null;
 });
+
+
+  const contactBtn = document.querySelector('.contactBtn');
+  const contactPopup = document.getElementById('contactPopup');
+  const closePopup = document.querySelector('.closePopup');
+
+  contactBtn.addEventListener('click', () => {
+    contactPopup.classList.add('open');
+  });
+
+  closePopup.addEventListener('click', () => {
+    contactPopup.classList.remove('open');
+  });
+
   </script>
 
   <footer>
