@@ -174,6 +174,26 @@ body::before {
   transition: 0.2s;
 }
 
+html, body {
+  overflow-y: scroll;   /* mantém o scroll funcional */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Chrome, Edge, Safari */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
+.contactPopup {
+  display: none;
+}
+
+.contactPopup.open {
+  display: block;
+}
+
 .trackPlay:hover {
   background: #555;
 }
